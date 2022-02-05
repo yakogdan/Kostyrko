@@ -3,4 +3,7 @@
     <string name="title_last">Last</string>
     <string name="title_best">Best</string>
     <string name="title_hot">Hot</string>
+    <string name="btnBack">Back</string>
+    <string name="btnNext">Next</string>
+    <string name="ivLastDescription">GIF</string>
 </resources>
