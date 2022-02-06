@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -35,7 +33,7 @@ class MainFragment : Fragment() {
                 counter++
                 downloadGif(counter)
                 Log.d("moytag", counter.toString())
-                bindingLast.btnBack.visibility = View.VISIBLE
+                bindingLast.btnBack.isEnabled = true
             } else {
                 counter++
                 Log.d("moytag", counter.toString())
@@ -50,7 +48,7 @@ class MainFragment : Fragment() {
                 downloadGif(counter)
             } else if(counter == 1){
                 counter--
-                bindingLast.btnBack.visibility = View.INVISIBLE
+                bindingLast.btnBack.isEnabled = false
                 Log.d("moytag", counter.toString())
                 downloadGif(counter)
 
@@ -68,6 +66,7 @@ class MainFragment : Fragment() {
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_error)
                 .into(bindingLast.ivLast)
+            bindingLast.tvDescription.text = gifData.description
         }
     }
 }

@@ -25,13 +25,13 @@ class MainViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                if (check) {
-                    gifDataList.add(GifDataPresentation(gifUrl = "https${it.gifURL.trimSubstring(4)}", description = it.description))
-                    check = false
-                    Log.d("moytag", "add new")
-                }
-                if (newNumber > oldNumber && newNumber >= gifDataList.size-1) {
-                    gifDataList.add(GifDataPresentation(gifUrl = "https${it.gifURL.trimSubstring(4)}", description = it.description))
+                if ((newNumber > oldNumber && newNumber >= gifDataList.size - 1) || check) {
+                    gifDataList.add(
+                        GifDataPresentation(
+                            gifUrl = "https${it.gifURL.trimSubstring(4)}",
+                            description = it.description
+                        )
+                    )
                     check = false
                     Log.d("moytag", "add new")
                 }
