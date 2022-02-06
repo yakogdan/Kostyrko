@@ -16,16 +16,31 @@ class MainViewModel : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     private val developerslifeApi: DeveloperslifeApi = TinkoffApp.instance.developerslifeApi
     val developerslifeLiveData: MutableLiveData<GifDataPresentation> = MutableLiveData()
+    var gifDataList = mutableListOf<GifDataPresentation>()
+    var oldNumber: Int = 0
+    var check: Boolean = true
 
-    fun fetchData() {
+    fun fetchData(newNumber: Int) {
         compositeDisposable.add(developerslifeApi.getData()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                developerslifeLiveData.value = GifDataPresentation(gifUrl = "https${it.gifURL.trimSubstring(4)}", description = it.description)
+                if (check) {
+                    gifDataList.add(GifDataPresentation(gifUrl = "https${it.gifURL.trimSubstring(4)}", description = it.description))
+                    check = false
+                    Log.d("moytag", "add new")
+                }
+                if (newNumber > oldNumber && newNumber >= gifDataList.size-1) {
+                    gifDataList.add(GifDataPresentation(gifUrl = "https${it.gifURL.trimSubstring(4)}", description = it.description))
+                    check = false
+                    Log.d("moytag", "add new")
+                }
+                developerslifeLiveData.value = gifDataList[newNumber]
+                oldNumber = newNumber
             }, {
                 Log.e("Error", it.message.toString())
             }))
+
     }
 }
 

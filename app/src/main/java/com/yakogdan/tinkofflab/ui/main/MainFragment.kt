@@ -1,9 +1,12 @@
 package com.yakogdan.tinkofflab.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -13,8 +16,8 @@ import com.yakogdan.tinkofflab.databinding.FragmentMainBinding
 class MainFragment : Fragment() {
 
     private lateinit var bindingLast: FragmentMainBinding
-    private val lastViewModel: MainViewModel by viewModels()
-
+    private val mainViewModel: MainViewModel by viewModels()
+    var counter: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,21 +28,46 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        downloadGif()
+        downloadGif(counter)
+        Log.d("moytag", counter.toString())
         bindingLast.btnNext.setOnClickListener {
-            downloadGif()
+            if (counter == 0) {
+                counter++
+                downloadGif(counter)
+                Log.d("moytag", counter.toString())
+                bindingLast.btnBack.visibility = View.VISIBLE
+            } else {
+                counter++
+                Log.d("moytag", counter.toString())
+            downloadGif(counter)
+            }
+
+        }
+        bindingLast.btnBack.setOnClickListener {
+            if (counter > 1) {
+                counter--
+                Log.d("moytag", counter.toString())
+                downloadGif(counter)
+            } else if(counter == 1){
+                counter--
+                bindingLast.btnBack.visibility = View.INVISIBLE
+                Log.d("moytag", counter.toString())
+                downloadGif(counter)
+
+            }
+
+
         }
 
     }
-    private fun downloadGif() {
-        lastViewModel.developerslifeLiveData.observe(viewLifecycleOwner) { gifData ->
+    private fun downloadGif(listNumber: Int) {
+        mainViewModel.fetchData(listNumber)
+        mainViewModel.developerslifeLiveData.observe(viewLifecycleOwner) { gifData ->
             Glide.with(this)
                 .load(gifData.gifUrl)
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_error)
                 .into(bindingLast.ivLast)
-
         }
-        lastViewModel.fetchData()
     }
 }
