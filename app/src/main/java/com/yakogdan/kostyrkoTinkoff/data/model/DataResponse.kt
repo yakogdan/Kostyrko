@@ -1,4 +1,4 @@
-package com.yakogdan.tinkofflab.data.model
+package com.yakogdan.kostyrkoTinkoff.data.model
 
 
 import com.google.gson.annotations.SerializedName

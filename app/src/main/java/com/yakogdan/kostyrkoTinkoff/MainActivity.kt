@@ -1,9 +1,9 @@
-package com.yakogdan.tinkofflab
+package com.yakogdan.kostyrkoTinkoff
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.yakogdan.tinkofflab.databinding.ActivityMainBinding
-import com.yakogdan.tinkofflab.ui.main.MainFragment
+import com.yakogdan.kostyrkoTinkoff.databinding.ActivityMainBinding
+import com.yakogdan.kostyrkoTinkoff.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +15,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, MainFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentСontainer, MainFragment()).commit()
     }
 }

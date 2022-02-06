@@ -1,6 +1,6 @@
-package com.yakogdan.tinkofflab.data
+package com.yakogdan.kostyrkoTinkoff.data
 
-import com.yakogdan.tinkofflab.data.model.DataResponse
+import com.yakogdan.kostyrkoTinkoff.data.model.DataResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 

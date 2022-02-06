@@ -1,4 +1,4 @@
-package com.yakogdan.tinkofflab
+package com.yakogdan.kostyrkoTinkoff
 
 import org.junit.Test
 

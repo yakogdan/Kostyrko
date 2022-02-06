@@ -1,7 +1,7 @@
-package com.yakogdan.tinkofflab
+package com.yakogdan.kostyrkoTinkoff
 
 import android.app.Application
-import com.yakogdan.tinkofflab.data.DeveloperslifeApi
+import com.yakogdan.kostyrkoTinkoff.data.DeveloperslifeApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
