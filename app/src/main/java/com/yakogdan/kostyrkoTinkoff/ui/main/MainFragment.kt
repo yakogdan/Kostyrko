@@ -54,14 +54,14 @@ class MainFragment : Fragment() {
 
     private fun setData(listNumber: Int) {
         mainViewModel.fetchData(listNumber)
-        mainViewModel.developerslifeLiveData.observe(viewLifecycleOwner) { gifData ->
+        mainViewModel.developerslifeLiveData.observe(viewLifecycleOwner) { dataPresentation ->
             Glide.with(this)
-                .load(gifData.gifUrl)
-                .placeholder(R.drawable.ic_image)
-                .error(R.drawable.ic_error)
+                .load(dataPresentation.gifUrl)
+                .placeholder(R.drawable.ic_glide_placeholder)
+                .error(R.drawable.ic_glide_error)
                 .into(binding.ivLast)
 
-            binding.tvDescription.text = gifData.description
+            binding.tvDescription.text = dataPresentation.description
         }
     }
 }

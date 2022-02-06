@@ -17,25 +17,24 @@ class MainViewModel : ViewModel() {
     private val developerslifeApi: DeveloperslifeApi = TinkoffApp.instance.developerslifeApi
     val developerslifeLiveData: MutableLiveData<DataPresentation> = MutableLiveData()
     private var dataList: MutableList<DataPresentation> = mutableListOf()
-    var oldNumber: Int = 0
     var openedFirstTime: Boolean = true
 
-    fun fetchData(newNumber: Int) {
-        compositeDisposable.add(developerslifeApi.getData()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ dataResponse ->
-                if ((newNumber > oldNumber && newNumber >= dataList.size - 1) || openedFirstTime) {
-                    dataList.add(
-                        DataPresentation(
-                            gifUrl = "https${dataResponse.gifURL.trimSubstring(4)}",
-                            description = dataResponse.description
+    fun fetchData(listNumber: Int) {
+        compositeDisposable.add(
+            developerslifeApi.getData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ dataResponse ->
+                    if (listNumber >= dataList.size - 1 || openedFirstTime) {
+                        dataList.add(
+                            DataPresentation(
+                                gifUrl = "https${dataResponse.gifURL.trimSubstring(4)}",
+                                description = dataResponse.description
+                            )
                         )
-                    )
-                    openedFirstTime = false
-                }
-                developerslifeLiveData.value = dataList[newNumber]
-                oldNumber = newNumber
+                        openedFirstTime = false
+                    }
+                    developerslifeLiveData.value = dataList[listNumber]
 
             }, { throwable ->
                 Log.e("Error", throwable.message.toString())
