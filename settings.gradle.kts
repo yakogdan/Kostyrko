@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "KinopoiskKostyrko"
 include(":app")
- 
+include(":data")
+include(":domain")
