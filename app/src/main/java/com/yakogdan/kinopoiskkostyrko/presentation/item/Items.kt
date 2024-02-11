@@ -1,6 +1,7 @@
 package com.yakogdan.kinopoiskkostyrko.presentation.item
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,11 +20,12 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.yakogdan.kinopoiskkostyrko.domain.entity.Film
 
-@OptIn(ExperimentalGlideComposeApi::class)
+@OptIn(ExperimentalGlideComposeApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun FilmCard(
     filmItem: Film,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onLongClick: () -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -31,7 +33,14 @@ fun FilmCard(
     ) {
         Row(
             modifier = Modifier
-                .clickable { onClick() }
+                .combinedClickable(
+                    onClick = {
+                        onClick()
+                    },
+                    onLongClick = {
+                        onLongClick()
+                    }
+                )
                 .padding(24.dp)
         ) {
             GlideImage(

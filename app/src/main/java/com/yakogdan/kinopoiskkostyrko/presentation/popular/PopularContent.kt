@@ -30,6 +30,7 @@ fun PopularContent(component: PopularComponent) {
 
         is PopularStore.State.FilmsState.Loaded -> {
             Column {
+                Text(text = "Популярное", color = Color.Red)
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(16.dp),
@@ -43,12 +44,14 @@ fun PopularContent(component: PopularComponent) {
                             filmItem = item,
                             onClick = {
                                 component.onFilmItemClick(item)
+                            },
+                            onLongClick = {
+                                component.addToFavourite(item)
                             }
                         )
                     }
                 }
             }
-
         }
 
         PopularStore.State.FilmsState.Loading -> {

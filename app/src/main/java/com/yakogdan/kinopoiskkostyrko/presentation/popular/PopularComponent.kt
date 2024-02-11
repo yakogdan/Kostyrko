@@ -8,4 +8,6 @@ interface PopularComponent {
     val model: StateFlow<PopularStore.State>
 
     fun onFilmItemClick(film: Film)
+
+    fun addToFavourite(film: Film)
 }

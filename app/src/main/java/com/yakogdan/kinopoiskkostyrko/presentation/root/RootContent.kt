@@ -30,7 +30,7 @@ fun RootContent(component: RootComponent) {
 
                         }
                     ) {
-                        Text(text = "1")
+                        Text(text = "Популярные")
                     }
                     Button(
                         modifier = Modifier.weight(1f),
@@ -38,7 +38,7 @@ fun RootContent(component: RootComponent) {
 
                         }
                     ) {
-                        Text(text = "2")
+                        Text(text = "Избранное")
                     }
                 }
             }

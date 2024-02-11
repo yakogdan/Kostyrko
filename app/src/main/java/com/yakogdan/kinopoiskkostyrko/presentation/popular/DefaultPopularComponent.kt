@@ -41,6 +41,10 @@ class DefaultPopularComponent @AssistedInject constructor(
         store.accept(PopularStore.Intent.CityItemClicked(film))
     }
 
+    override fun addToFavourite(film: Film) {
+        store.accept(PopularStore.Intent.ClickAddToFavourite(film))
+    }
+
     @AssistedFactory
     interface Factory {
         fun create(
