@@ -23,7 +23,7 @@ class DefaultRootComponent @AssistedInject constructor(
 
     override val stack: Value<ChildStack<*, RootComponent.Child>> = childStack(
         source = navigation,
-        initialConfiguration = Config.Favourite,
+        initialConfiguration = Config.Popular,
         handleBackButton = true,
         childFactory = ::child
     )

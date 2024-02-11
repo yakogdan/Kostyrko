@@ -9,18 +9,18 @@ import com.yakogdan.kinopoiskkostyrko.domain.entity.Genre
 
 fun Film.filmToDbModel(): FilmDb = FilmDb(
     kinopoiskId,
-    countries.countriesToDbModels(),
-    genres.genresToDbModels(),
-    imdbId,
-    nameEn,
-    nameOriginal,
-    nameRu,
-    posterUrl,
-    posterUrlPreview,
-    ratingImdb,
-    ratingKinopoisk,
-    type,
-    year
+    countries?.countriesToDbModels() ?: listOf(),
+    genres?.genresToDbModels() ?: listOf(),
+    imdbId ?: "",
+    nameEn ?: "",
+    nameOriginal ?: "",
+    nameRu ?: "",
+    posterUrl ?: "",
+    posterUrlPreview ?: "",
+    ratingImdb ?: 0.0,
+    ratingKinopoisk ?: 0.0,
+    type ?: "",
+    year ?: 1111
 )
 
 fun Country.countryToDbModel(): CountryDb = CountryDb(country)

@@ -1,5 +1,6 @@
 package com.yakogdan.kinopoiskkostyrko.presentation.popular
 
+import android.util.Log
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
@@ -81,8 +82,10 @@ class PopularStoreFactory @Inject constructor(
                 dispatch(Action.PopularFilmsStartLoading)
                 try {
                     val films = getPopularFilmsUseCase()
+                    Log.d("myTAG", "invoke: $films")
                     dispatch(Action.PopularFilmsLoaded(films))
                 } catch (e: Exception) {
+                    Log.e("myTAG", "$e")
                     dispatch(Action.PopularFilmsLoadingError)
                 }
             }

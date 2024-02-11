@@ -6,27 +6,27 @@ data class FilmDTO(
     @SerializedName("kinopoiskId")
     val kinopoiskId: Int,
     @SerializedName("countries")
-    val countries: List<CountryDTO>,
+    val countries: List<CountryDTO>? = listOf(),
     @SerializedName("genres")
-    val genres: List<GenreDTO>,
+    val genres: List<GenreDTO>? = listOf(),
     @SerializedName("imdbId")
-    val imdbId: String,
+    val imdbId: String? = "",
     @SerializedName("nameEn")
-    val nameEn: String,
+    val nameEn: String? = "",
     @SerializedName("nameOriginal")
-    val nameOriginal: String,
+    val nameOriginal: String? = "",
     @SerializedName("nameRu")
-    val nameRu: String,
+    val nameRu: String? = "",
     @SerializedName("posterUrl")
-    val posterUrl: String,
+    val posterUrl: String? = "",
     @SerializedName("posterUrlPreview")
-    val posterUrlPreview: String,
+    val posterUrlPreview: String? = "",
     @SerializedName("ratingImdb")
-    val ratingImdb: Double,
+    val ratingImdb: Double? = 0.0,
     @SerializedName("ratingKinopoisk")
-    val ratingKinopoisk: Double,
+    val ratingKinopoisk: Double? = 0.0,
     @SerializedName("type")
-    val type: String,
+    val type: String? = "",
     @SerializedName("year")
-    val year: Int
+    val year: Int? = 1111
 )

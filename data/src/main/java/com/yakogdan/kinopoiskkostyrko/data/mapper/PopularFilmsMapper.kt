@@ -9,8 +9,8 @@ import com.yakogdan.kinopoiskkostyrko.domain.entity.Genre
 
 fun FilmDTO.filmDTOToEntity(): Film = Film(
     kinopoiskId,
-    countries.countriesDTOToEntities(),
-    genres.genresDTOToEntities(),
+    countries?.countriesDTOToEntities() ?: listOf(),
+    genres?.genresDTOToEntities() ?: listOf(),
     imdbId,
     nameEn,
     nameOriginal,
