@@ -2,9 +2,9 @@ package com.yakogdan.kinopoiskkostyrko.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class TopFilms(
+data class TopFilmsDTO(
     @SerializedName("items")
-    val items: List<Item>,
+    val films: List<FilmDTO>,
     @SerializedName("total")
     val total: Int,
     @SerializedName("totalPages")

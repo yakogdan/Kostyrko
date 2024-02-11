@@ -1,11 +1,11 @@
 package com.yakogdan.kinopoiskkostyrko.domain.entity
 
 data class Film(
+    val kinopoiskId: Int,
     val countries: List<Country>,
     val genres: List<Genre>,
     val imdbId: String,
-    val kinopoiskId: Int,
-    val nameEn: Any,
+    val nameEn: String,
     val nameOriginal: String,
     val nameRu: String,
     val posterUrl: String,

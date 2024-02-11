@@ -2,17 +2,17 @@ package com.yakogdan.kinopoiskkostyrko.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Item(
-    @SerializedName("countries")
-    val countries: List<Country>,
-    @SerializedName("genres")
-    val genres: List<Genre>,
-    @SerializedName("imdbId")
-    val imdbId: String,
+data class FilmDTO(
     @SerializedName("kinopoiskId")
     val kinopoiskId: Int,
+    @SerializedName("countries")
+    val countries: List<CountryDTO>,
+    @SerializedName("genres")
+    val genres: List<GenreDTO>,
+    @SerializedName("imdbId")
+    val imdbId: String,
     @SerializedName("nameEn")
-    val nameEn: Any,
+    val nameEn: String,
     @SerializedName("nameOriginal")
     val nameOriginal: String,
     @SerializedName("nameRu")

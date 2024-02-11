@@ -1,6 +1,6 @@
 package com.yakogdan.kinopoiskkostyrko.data.network.api
 
-import com.yakogdan.kinopoiskkostyrko.data.network.dto.TopFilms
+import com.yakogdan.kinopoiskkostyrko.data.network.dto.TopFilmsDTO
 import retrofit2.http.GET
 import retrofit2.http.Headers
 
@@ -8,7 +8,7 @@ interface ApiService {
 
     @Headers("X-API-KEY: $API_KEY_MY")
     @GET("/api/v2.2/films/collections?type=TOP_POPULAR_ALL&page=1")
-    suspend fun loadTopFilms(): TopFilms
+    suspend fun loadTopFilms(): TopFilmsDTO
 
     companion object {
         private const val API_KEY_MY = "7560e292-123f-4ea3-98a5-f42d521bad24"
