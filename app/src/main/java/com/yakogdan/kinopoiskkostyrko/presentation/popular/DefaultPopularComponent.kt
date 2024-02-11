@@ -7,6 +7,7 @@ import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
 import com.yakogdan.kinopoiskkostyrko.domain.entity.Film
 import com.yakogdan.kinopoiskkostyrko.presentation.extensions.componentScope
 import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
@@ -38,5 +39,13 @@ class DefaultPopularComponent @AssistedInject constructor(
 
     override fun onFilmItemClick(film: Film) {
         store.accept(PopularStore.Intent.CityItemClicked(film))
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(
+            @Assisted("onFilmItemClicked") onFilmItemClicked: (Film) -> Unit,
+            @Assisted("componentContext") componentContext: ComponentContext
+        ): DefaultPopularComponent
     }
 }
