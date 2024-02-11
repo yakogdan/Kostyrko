@@ -13,7 +13,7 @@ import com.yakogdan.kinopoiskkostyrko.presentation.favourite.FavouriteStore.Stat
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-internal interface FavouriteStore : Store<Intent, State, Label> {
+interface FavouriteStore : Store<Intent, State, Label> {
 
     sealed interface Intent {
         data class CityItemClicked(val film: Film) : Intent
@@ -28,7 +28,7 @@ internal interface FavouriteStore : Store<Intent, State, Label> {
     }
 }
 
-internal class FavouriteStoreFactory @Inject constructor(
+class FavouriteStoreFactory @Inject constructor(
     private val storeFactory: StoreFactory,
     private val getFavouriteFilmsUseCase: GetFavouriteFilmsUseCase
 ) {
