@@ -14,7 +14,7 @@ import com.yakogdan.kinopoiskkostyrko.presentation.popular.PopularStore.State
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-internal interface PopularStore : Store<Intent, State, Label> {
+interface PopularStore : Store<Intent, State, Label> {
 
     sealed interface Intent {
 
@@ -44,7 +44,7 @@ internal interface PopularStore : Store<Intent, State, Label> {
     }
 }
 
-internal class PopularStoreFactory @Inject constructor(
+class PopularStoreFactory @Inject constructor(
     private val storeFactory: StoreFactory,
     private val getPopularFilmsUseCase: GetPopularFilmsUseCase,
     private val changeFavouriteStateUseCase: ChangeFavouriteStateUseCase
