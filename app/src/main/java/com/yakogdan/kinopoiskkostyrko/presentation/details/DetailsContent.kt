@@ -1,8 +1,9 @@
 package com.yakogdan.kinopoiskkostyrko.presentation.details
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,10 +15,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.yakogdan.kinopoiskkostyrko.R
 import com.yakogdan.kinopoiskkostyrko.domain.entity.Film
 
 @Composable
@@ -59,38 +63,45 @@ private fun Initial() {
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 private fun Details(film: Film) {
-    Row(
+    Column(
         modifier = Modifier
-            .padding(24.dp)
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         GlideImage(
-            modifier = Modifier.height(63.dp),
-            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            contentDescription = stringResource(R.string.film_poster),
             model = film.posterUrl
         )
-        Column {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp)
+        ) {
             Text(
-                modifier = Modifier
-                    .padding(bottom = 24.dp),
-                color = MaterialTheme.colorScheme.background,
-                style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+                color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.titleMedium.copy(fontSize = 20.sp),
                 text = film.nameRu.toString()
             )
-
-            Row {
-                Text(
-                    modifier = Modifier,
-                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp),
-                    color = MaterialTheme.colorScheme.background,
-                    text = film.genres?.get(0)?.genre ?: ""
-                )
-                Text(
-                    modifier = Modifier,
-                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp),
-                    color = MaterialTheme.colorScheme.background,
-                    text = film.year.toString()
-                )
-            }
+            Spacer(modifier = Modifier.height(14.dp))
+            val genres = film.genres ?: listOf()
+            val genresString = genres.joinToString(separator = ", ") { it.genre }
+            Text(
+                modifier = Modifier,
+                fontSize = 14.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                text = "Жанры: $genresString"
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            val countries = film.countries ?: listOf()
+            val countriesString = countries.joinToString(separator = ", ") { it.country }
+            Text(
+                modifier = Modifier,
+                fontSize = 14.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                text = "Жанры: $countriesString"
+            )
         }
     }
 }
