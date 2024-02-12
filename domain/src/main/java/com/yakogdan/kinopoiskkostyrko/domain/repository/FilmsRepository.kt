@@ -3,7 +3,7 @@ package com.yakogdan.kinopoiskkostyrko.domain.repository
 import com.yakogdan.kinopoiskkostyrko.domain.entity.Film
 import kotlinx.coroutines.flow.Flow
 
-interface FavouriteRepository {
+interface FilmsRepository {
 
     val favouriteFilms: Flow<List<Film>>
 
@@ -12,4 +12,10 @@ interface FavouriteRepository {
     suspend fun addToFavourite(film: Film)
 
     suspend fun removeFromFavourite(filmId: Int)
+
+    suspend fun getPopularFilms(): List<Film>
+
+    suspend fun changeToFavourite()
+
+    suspend fun changeToPopular()
 }

@@ -1,5 +1,9 @@
 package com.yakogdan.kinopoiskkostyrko.domain.entity
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Film(
     val kinopoiskId: Int,
     val countries: List<Country>? = listOf(),
@@ -14,4 +18,4 @@ data class Film(
     val ratingKinopoisk: Double? = 0.0,
     val type: String? = "",
     val year: Int? = 1111
-)
+) : Parcelable

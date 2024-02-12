@@ -22,6 +22,10 @@ interface PopularStore : Store<Intent, State, Label> {
         data class CityItemClicked(val film: Film) : Intent
 
         data class ClickAddToFavourite(val film: Film) : Intent
+
+        data object ChangeScreenToFavourite : Intent
+
+        data object ChangeScreenToPopular : Intent
     }
 
     data class State(
@@ -104,6 +108,9 @@ class PopularStoreFactory @Inject constructor(
                         changeFavouriteStateUseCase.addToFavourite(intent.film)
                     }
                 }
+
+                Intent.ChangeScreenToFavourite -> TODO()
+                Intent.ChangeScreenToPopular -> TODO()
             }
         }
 

@@ -5,10 +5,8 @@ import com.yakogdan.kinopoiskkostyrko.data.local.db.FavouriteDatabase
 import com.yakogdan.kinopoiskkostyrko.data.local.db.FavouriteFilmsDao
 import com.yakogdan.kinopoiskkostyrko.data.network.api.ApiFactory
 import com.yakogdan.kinopoiskkostyrko.data.network.api.ApiService
-import com.yakogdan.kinopoiskkostyrko.data.repository.FavouriteRepositoryImpl
-import com.yakogdan.kinopoiskkostyrko.data.repository.PopularRepositoryImpl
-import com.yakogdan.kinopoiskkostyrko.domain.repository.FavouriteRepository
-import com.yakogdan.kinopoiskkostyrko.domain.repository.PopularRepository
+import com.yakogdan.kinopoiskkostyrko.data.repository.FilmsRepositoryImpl
+import com.yakogdan.kinopoiskkostyrko.domain.repository.FilmsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -17,10 +15,7 @@ import dagger.Provides
 interface DataModule {
 
     @[ApplicationScope Binds]
-    fun bindFavouriteRepository(impl: FavouriteRepositoryImpl): FavouriteRepository
-
-    @[ApplicationScope Binds]
-    fun bindPopularRepository(impl: PopularRepositoryImpl): PopularRepository
+    fun bindFilmsRepository(impl: FilmsRepositoryImpl): FilmsRepository
 
     companion object {
 
