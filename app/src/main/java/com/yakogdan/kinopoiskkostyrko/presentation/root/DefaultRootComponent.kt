@@ -7,7 +7,7 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import com.yakogdan.kinopoiskkostyrko.presentation.favourite.DefaultFavouriteComponent
-import com.yakogdan.kinopoiskkostyrko.presentation.popular.DefaultPopularComponent
+import com.yakogdan.kinopoiskkostyrko.presentation.films.DefaultFilmsComponent
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -15,7 +15,7 @@ import kotlinx.parcelize.Parcelize
 
 class DefaultRootComponent @AssistedInject constructor(
     private val favouriteComponentFactory: DefaultFavouriteComponent.Factory,
-    private val popularComponentFactory: DefaultPopularComponent.Factory,
+    private val popularComponentFactory: DefaultFilmsComponent.Factory,
     @Assisted("componentContext") componentContext: ComponentContext
 ) : RootComponent, ComponentContext by componentContext {
 
@@ -23,7 +23,7 @@ class DefaultRootComponent @AssistedInject constructor(
 
     override val stack: Value<ChildStack<*, RootComponent.Child>> = childStack(
         source = navigation,
-        initialConfiguration = Config.Favourite,
+        initialConfiguration = Config.Popular,
         handleBackButton = true,
         childFactory = ::child
     )

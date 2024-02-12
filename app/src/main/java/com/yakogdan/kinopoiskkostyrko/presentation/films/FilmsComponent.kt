@@ -1,9 +1,9 @@
-package com.yakogdan.kinopoiskkostyrko.presentation.popular
+package com.yakogdan.kinopoiskkostyrko.presentation.films
 
 import com.yakogdan.kinopoiskkostyrko.domain.entity.Film
 import kotlinx.coroutines.flow.StateFlow
 
-interface PopularComponent {
+interface FilmsComponent {
 
     val model: StateFlow<PopularStore.State>
 

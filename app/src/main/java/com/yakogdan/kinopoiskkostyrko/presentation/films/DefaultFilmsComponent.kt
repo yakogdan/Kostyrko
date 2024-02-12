@@ -1,4 +1,4 @@
-package com.yakogdan.kinopoiskkostyrko.presentation.popular
+package com.yakogdan.kinopoiskkostyrko.presentation.films
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.instancekeeper.getStore
@@ -13,11 +13,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class DefaultPopularComponent @AssistedInject constructor(
+class DefaultFilmsComponent @AssistedInject constructor(
     private val storeFactory: PopularStoreFactory,
     @Assisted("onFilmItemClicked") private val onFilmItemClicked: (Film) -> Unit,
     @Assisted("componentContext") componentContext: ComponentContext
-) : PopularComponent, ComponentContext by componentContext {
+) : FilmsComponent, ComponentContext by componentContext {
 
     private val store = instanceKeeper.getStore { storeFactory.create() }
     private val scope = componentScope()
@@ -50,6 +50,6 @@ class DefaultPopularComponent @AssistedInject constructor(
         fun create(
             @Assisted("onFilmItemClicked") onFilmItemClicked: (Film) -> Unit,
             @Assisted("componentContext") componentContext: ComponentContext
-        ): DefaultPopularComponent
+        ): DefaultFilmsComponent
     }
 }

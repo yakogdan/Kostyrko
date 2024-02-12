@@ -1,4 +1,4 @@
-package com.yakogdan.kinopoiskkostyrko.presentation.popular
+package com.yakogdan.kinopoiskkostyrko.presentation.films
 
 import android.util.Log
 import com.arkivanov.mvikotlin.core.store.Reducer
@@ -9,9 +9,9 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.yakogdan.kinopoiskkostyrko.domain.entity.Film
 import com.yakogdan.kinopoiskkostyrko.domain.usecase.ChangeFavouriteStateUseCase
 import com.yakogdan.kinopoiskkostyrko.domain.usecase.GetPopularFilmsUseCase
-import com.yakogdan.kinopoiskkostyrko.presentation.popular.PopularStore.Intent
-import com.yakogdan.kinopoiskkostyrko.presentation.popular.PopularStore.Label
-import com.yakogdan.kinopoiskkostyrko.presentation.popular.PopularStore.State
+import com.yakogdan.kinopoiskkostyrko.presentation.films.PopularStore.Intent
+import com.yakogdan.kinopoiskkostyrko.presentation.films.PopularStore.Label
+import com.yakogdan.kinopoiskkostyrko.presentation.films.PopularStore.State
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.yakogdan.kinopoiskkostyrko.presentation.item.FilmCard
 
 @Composable
@@ -20,7 +20,7 @@ fun FavouriteContent(component: FavouriteComponent) {
 
     val state by component.model.collectAsState()
     Column {
-        Text(text = "Избранное", color = Color.Red)
+        Text(text = "Избранное", fontSize = 25.sp)
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(16.dp),
